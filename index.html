@@ -30,36 +30,31 @@
 
         <div class="text">
             <h1>The Ultimate Fashion<br> Campaign begins</h1>
-            <p></p>
+            <p>Experience fashion like never before with our exclusive collection.</p>
             <a href="" class="btn">Shop Now</a>
             <a href="" class="btn">View more</a> 
         </div>
         <div class="clothes">
-            <img src="/images/wear1.jpg" alt="">
-            <img src="/images/wear 2.jpg" alt="">
-            <img src="/images/wear 3.jpg" alt="">
-            <img src="/images/wear 4.jpg" alt="">
-            <img src="/images/wear 5.jpg" alt="">
+            <img src="/images/wear1.jpg" alt="" class="clothes-img">
+            <img src="/images/wear 2.jpg" alt="" class="clothes-img">
+            <img src="/images/wear 3.jpg" alt="" class="clothes-img">
+            <img src="/images/wear 4.jpg" alt="" class="clothes-img">
+            <img src="/images/wear 5.jpg" alt="" class="clothes-img">
         </div>
         <div class="clothes-toggler">
-            <img src="/images/logo 2.png">
+            <img src="/images/logo2.png" class="active feature-img">
         </div>
     </header>
     <script>
-        const clothImages = document.querySelectorAll('.clothes img');
-        const clothToggler = document.querySelector('.clothes-toggler img');
-        let currentIndex = 0;
+        const clothImages = document.querySelectorAll('.clothes-img');
+        const clothToggler = document.querySelector('.feature-img');
         
-        clothToggler[currentIndex].classList.add('active');
-
-        clothImages.forEach((img,Index)=>{
-            img.addEventListener('click',()=>{
-                clothToggler.forEach(toggleimg => toggleimg.classList.remove('active'));
-                clothToggler[currentIndex].classList.add('active');
-                clothToggler[currentIndex].src = clothImages[Index].src;
-                currentIndex=(currentIndex+1)%clothToggler.length;
-            })
-        })
+        clothImages.forEach((img) => {
+            img.addEventListener('click', () => {
+                clothToggler.src = img.src;
+                clothToggler.classList.add('active');
+            });
+        });
 
         function createStars() {
             const starsContainer = document.getElementById('stars');
@@ -67,17 +62,17 @@
             const windowHeight = window.innerHeight;
 
             for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div')
-                stasr.className = 'star'
-                star.style.left = `${Math.random() * windowWidth}px`
-                star.style.top = `${Math.random() * windowHeight}px`
-                starsContainer.appendChild(star)
-                
+                const star = document.createElement('div');
+                star.className = 'stars'; // Fixed typo from 'stasr' to 'stars'
+                star.style.left = `${Math.random() * windowWidth}px`;
+                star.style.top = `${Math.random() * windowHeight}px`;
+                star.style.height = `${Math.random() * 3}px`;
+                starsContainer.appendChild(star);
             }
         }
 
-        // call the createstars function wwhen the page loads
-        window.addEventListener('load', createStars)
+        // Call the createStars function when the page loads
+        window.addEventListener('load', createStars);
     </script>
 </body>
 </html>

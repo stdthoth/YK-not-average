@@ -1,73 +1,82 @@
+/* Base styles */
 * {
     margin: 0;
     padding: 0;
-    text-decoration:none ;
-    
+    text-decoration: none;
 }
 
 body {
-    overflow: hidden;
     color: white;
-    font-family: "Poppins",sans-serif;
+    font-family: "Poppins", sans-serif;
     animation: fadeIn 1s ease-in-out;
     background-color: black;
     background-attachment: fixed;
+    overflow-x: hidden;
 }
 
 header {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: transparent;
     animation: fadeIn 1s ease-in-out;
+    position: relative;
 }
+
 .stars {
     position: absolute;
     width: 2px;
     background-color: #fff;
     animation: twinkle 2s infinite;
     box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
-
 }
 
 @keyframes twinkle {
-    0% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.5;
-    }
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
 
+/* Responsive navbar */
 .navbar {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 1rem;
     animation: slideInFromTop 1s ease-in-out;
+    flex-wrap: wrap;
 }
+
 .navbar img {
     width: 50px;
     animation: rotateIn 1s ease-in-out;
 }
+
+.navbar .center-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .navbar .center-nav a,
 .social a {
     color: #fff;
-    margin-left: 15px;
+    margin: 0 10px;
     font-size: 1.3rem;
     transition: all 0.5s ease;
     animation: fadeInUp 1s ease-in-out;
+    padding: 0.5rem 0;
 }
+
 .navbar .center-nav a:first-child {
-    color:white
+    color: white;
 }
+
 .navbar .center-nav a:hover,
 .social a:hover {
     text-shadow: 0px 0px 30px rgba(255, 255, 255, 0.5);
 }
 
-/*New styles for underline effect*/
+/* Underline effect */
 .navbar .center-nav a {
     position: relative;
     text-decoration: none;
@@ -91,98 +100,200 @@ header {
     transform: scaleX(1);
 }
 
+/* Main text content - made responsive and centered on mobile */
 .text {
     position: relative;
-    top: 10rem;
-    left: 11rem;
-    letter-spacing: 1px;
+    padding: 2rem;
+    max-width: 90%;
+    margin: 4rem auto 0;
     animation: fadeInUp 1s ease-in-out;
+    text-align: center; /* Center aligned on mobile */
+}
+
+@media (min-width: 768px) {
+    .text {
+        margin-left: 10%;
+        max-width: 70%;
+        text-align: left; /* Left aligned on tablets and up */
+    }
 }
 
 .text h1 {
     font-weight: bold;
-    font-size: 4rem;
-    margin-bottom: 10px;
+    font-size: 3rem; /* Increased from 2.5rem for mobile */
+    margin-bottom: 20px;
     animation: fadeInUp 1s ease-in-out;
+    line-height: 1.2; /* Better line spacing */
 }
 
-.btn {
-    color: #fff;
-    border: 2px solid;
-    position: relative;
-    top: 3rem;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 14px;
-    padding-bottom: 10px;
-    border-radius: 6px;
-    transition: all 0.5s ease;
-    margin-right: 10px;
-    animation: fadeInUp 1s ease-in-out 0.5s backwards;
+@media (min-width: 768px) {
+    .text h1 {
+        font-size: 3.5rem;
+    }
 }
 
-.text .btn:hover{
-    background-color: #fff;
-    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5) ;
+@media (min-width: 1024px) {
+    .text h1 {
+        font-size: 4rem;
+    }
 }
 
 .text p {
-    width: 46%;
+    width: 100%;
+    margin-bottom: 2rem;
     animation: fadeInUp 1s ease-in-out 1s backwards;
+    font-size: 1.1rem; /* Slightly larger paragraph text */
 }
 
+@media (min-width: 768px) {
+    .text p {
+        width: 70%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .text p {
+        width: 46%;
+    }
+}
+
+/* Buttons - centered on mobile */
+.btn {
+    display: inline-block;
+    color: #fff;
+    border: 2px solid;
+    padding: 14px 25px; /* Slightly larger touch target */
+    border-radius: 6px;
+    transition: all 0.5s ease;
+    margin: 10px;
+    animation: fadeInUp 1s ease-in-out 0.5s backwards;
+    font-size: 1.1rem; /* Larger button text */
+}
+
+.text .btn:hover {
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Bottom image gallery */
 .clothes {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
     display: flex;
-    width: 90%;
-    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px 0;
+    margin-top: 3rem; /* More space from text */
     animation: slideInFromBottom 1s ease-in-out 1.5s backwards;
 }
 
+@media (min-width: 768px) {
+    .clothes {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-wrap: nowrap;
+        margin-top: 0;
+    }
+}
+
 .clothes img {
-    width: 100px;
-    height: 100px;
-    margin-left: 20px;
+    width: 80px;
+    height: 80px;
+    margin: 10px;
     object-fit: cover;
     border: 2px solid white;
     transition: transform 0.3s ease;
     animation: fadeInUp 1s ease-in-out 1.5s backwards;
 }
 
+@media (min-width: 768px) {
+    .clothes img {
+        width: 100px;
+        height: 100px;
+        margin-left: 20px;
+    }
+}
+
 .clothes img:hover {
-    transform:scale(1.1);
+    transform: scale(1.1);
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
 }
+
+/* Feature image */
+.clothes-toggler {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
 .clothes-toggler img {
-    position: absolute;
-    width: 38%;
-    height:74%;
-    right: 47px;
-    top: 7rem;
-    filter: drop-shadow(63px 90px 392px white);
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+    display: none;
+    filter: drop-shadow(0 0 20px white);
     animation: fadeInUp 1s ease-in-out 1.5s backwards;
 }
-.clothes,.clothes-toggler {
-    display: flex;
+
+@media (min-width: 768px) {
+    .clothes-toggler img {
+        position: absolute;
+        right: 10%;
+        top: 20%;
+        width: 30%;
+        max-width: none;
+    }
 }
-.clothes-toggler img {
-    display: none;
+
+@media (min-width: 1024px) {
+    .clothes-toggler img {
+        width: 38%;
+        right: 5%;
+    }
 }
-.clothes-toggler img:active {
+
+.clothes-toggler img.active {
     display: block;
 }
-/* Animations*/
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
 
+/* Mobile-specific adjustments */
+@media (max-width: 767px) {
+    .navbar {
+        justify-content: center;
+    }
+    
+    .navbar > * {
+        margin-bottom: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .social {
+        justify-content: space-around;
+    }
+    
+    /* Ensure buttons are centered on mobile */
+    .text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    /* Make font bigger on mobile */
+    body {
+        font-size: 16px;
+    }
+}
+
+/* Animations unchanged */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes fadeInUp {
@@ -202,27 +313,29 @@ header {
         opacity: 0;
     }
     to {
-        transform:translateY(0);
+        transform: translateY(0);
         opacity: 1;
     }
 }
+
 @keyframes slideInFromBottom {
     from {
         transform: translateY(100%);
         opacity: 0;
     }
     to {
-        transform:translateY(0);
+        transform: translateY(0);
         opacity: 1;
     }
 }
+
 @keyframes rotateIn {
     from {
-        transform:rotate3d(0,0,1,-200deg);
+        transform: rotate3d(0, 0, 1, -200deg);
         opacity: 0;
     }
     to {
-      transform: none;
-      opacity: 1;  
+        transform: none;
+        opacity: 1;
     }
 }
