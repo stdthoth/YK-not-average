@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Average</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <div id="stars"></div>
+        <div class="navbar">
+            <img src="/images/logo.png" alt="logo">
+            <div class="center-nav">
+                <a href="#home">Home</a>
+                <a href="#shop">Shop</a>
+                <a href="#about">About</a>
+                <a href="#lookbook">Lookbook</a>
+            </div>
+            <div class="social">
+                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href=""><i class="fa-solid fa-cart-plus"></i></a>
+                <a href=""><i class="fa-solid fa-house"></i></a>
+            </div>
+        </div>
+
+        <div class="text">
+            <h1>The Ultimate Fashion<br> Campaign begins</h1>
+            <p></p>
+            <a href="" class="btn">Shop Now</a>
+            <a href="" class="btn">View more</a> 
+        </div>
+        <div class="clothes">
+            <img src="/images/wear1.jpg" alt="">
+            <img src="/images/wear 2.jpg" alt="">
+            <img src="/images/wear 3.jpg" alt="">
+            <img src="/images/wear 4.jpg" alt="">
+            <img src="/images/wear 5.jpg" alt="">
+        </div>
+        <div class="clothes-toggler">
+            <img src="/images/logo 2.png">
+        </div>
+    </header>
+    <script>
+        const clothImages = document.querySelectorAll('.clothes img');
+        const clothToggler = document.querySelector('.clothes-toggler img');
+        let currentIndex = 0;
+        
+        clothToggler[currentIndex].classList.add('active');
+
+        clothImages.forEach((img,Index)=>{
+            img.addEventListener('click',()=>{
+                clothToggler.forEach(toggleimg => toggleimg.classList.remove('active'));
+                clothToggler[currentIndex].classList.add('active');
+                clothToggler[currentIndex].src = clothImages[Index].src;
+                currentIndex=(currentIndex+1)%clothToggler.length;
+            })
+        })
+
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div')
+                stasr.className = 'star'
+                star.style.left = `${Math.random() * windowWidth}px`
+                star.style.top = `${Math.random() * windowHeight}px`
+                starsContainer.appendChild(star)
+                
+            }
+        }
+
+        // call the createstars function wwhen the page loads
+        window.addEventListener('load', createStars)
+    </script>
+</body>
+</html>
