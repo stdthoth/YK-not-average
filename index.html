@@ -15,16 +15,22 @@
         <div id="stars"></div>
         <div class="navbar">
             <img src="/images/logo.png" alt="logo">
-            <div class="center-nav">
-                <a href="#home">Home</a>
-                <a href="#shop">Shop</a>
-                <a href="#about">About</a>
-                <a href="#lookbook">Lookbook</a>
+            
+            <!-- Mobile hamburger menu button -->
+            <div class="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-            <div class="social">
-                <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-                <a href=""><i class="fa-solid fa-cart-plus"></i></a>
-                <a href=""><i class="fa-solid fa-house"></i></a>
+
+            <!-- Navigation menu -->
+            <div class="nav-menu">
+                <div class="center-nav">
+                    <a href="#home">Home</a>
+                    <a href="#shop">Shop</a>
+                    <a href="#about">About</a>
+                    <a href="#lookbook">Lookbook</a>
+                </div>
             </div>
         </div>
 
@@ -102,9 +108,42 @@
                 starsContainer.appendChild(star);
             }
         }
+        function handleScroll() {
+            const footer = document.querySelector('.footer');
+            const footerPosition = footer.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            // If footer is about to be visible (200px buffer)
+            if (footerPosition < windowHeight + 200) {
+                document.body.classList.add('footer-visible');
+            } else {
+                document.body.classList.remove('footer-visible');
+            }
+}
+
+        // Call on page load and on scroll
+        window.addEventListener('load', handleScroll);
+        window.addEventListener('scroll', handleScroll);
 
         // Call the createStars function when the page loads
         window.addEventListener('load', createStars);
+
+        // Toggle hamburger menu
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a nav link (for mobile)
+        document.querySelectorAll('.center-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
     </script>
 </body>
 </html>
