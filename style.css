@@ -262,7 +262,7 @@ header {
 
 @media (min-width: 768px) {
     .clothes {
-        position: fixed;
+        position: absolute;
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
@@ -304,6 +304,7 @@ header {
 .clothes-toggler img {
     width: 80%;
     max-width: 300px;
+    max-height: 500px;
     height: auto;
     margin: 0 auto;
     display: none;
